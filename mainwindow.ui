@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>961</width>
+    <height>620</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stacked_global">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_4">
+       <widget class="QPushButton" name="btn_wejscie">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>121</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>&amp;Wejście</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>150</y>
+          <width>261</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Bohaterowie:
+
+1 - [EGIPT] Ibrahim Ezz El-Din
+2 - [KANADA] Młodzież z Grassy Narrows
+3 - [MEKSYK] José Adrián
+4 - [NIGERIA] Nasu Abdulaziz
+5 - [SUDAN] Magai Matiop Ngong
+6 - [BIAŁORUŚ] Emil Ostrowko
+7 - [GRECJA] Sarah Mardini i Seán Binder
+8 - [CHINY] Yiliyasijiang Reheman
+9 - [FILIPINY] Marinel Sumook Ubaldo
+10 - [IRAN] Yasaman Aryani</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_wyjscie">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>10</y>
+          <width>121</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Wyjści&amp;e</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_list">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>70</y>
+          <width>261</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>&amp;Dodaj list</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="box_stat">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>10</y>
+          <width>421</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Podstawowe statystyki</string>
+        </property>
+        <widget class="QStackedWidget" name="stacked_stat">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>401</width>
+           <height>291</height>
+          </rect>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="page">
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>0</y>
+             <width>381</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="title">
+            <string>Wypełnienie świetlicy</string>
+           </property>
+           <widget class="QLCDNumber" name="lcd_swietlica">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>64</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLCDNumber {
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);}</string>
+            </property>
+            <property name="smallDecimalPoint">
+             <bool>false</bool>
+            </property>
+            <property name="digitCount">
+             <number>3</number>
+            </property>
+            <property name="mode">
+             <enum>QLCDNumber::Dec</enum>
+            </property>
+            <property name="segmentStyle">
+             <enum>QLCDNumber::Filled</enum>
+            </property>
+            <property name="intValue" stdset="0">
+             <number>24</number>
+            </property>
+           </widget>
+           <widget class="QProgressBar" name="progressBar">
+            <property name="geometry">
+             <rect>
+              <x>100</x>
+              <y>20</y>
+              <width>231</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QProgressBar::chunk {
+	background-color: #06b025;
+	width: 1px;}
+QProgressBar {
+	border: 1px solid grey;
+	border-radius: 0px;
+	text-align: center;}</string>
+            </property>
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="value">
+             <number>9</number>
+            </property>
+            <property name="textVisible">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="format">
+             <string>%p%</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>80</y>
+             <width>181</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="title">
+            <string>Wypełnienie stołówki</string>
+           </property>
+           <widget class="QLCDNumber" name="lcd_stolowka">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>20</y>
+              <width>81</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLCDNumber {
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);}</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QGroupBox" name="groupBox_4">
+           <property name="geometry">
+            <rect>
+             <x>210</x>
+             <y>80</y>
+             <width>181</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="title">
+            <string>Łącznie listów</string>
+           </property>
+           <widget class="QLCDNumber" name="lcd_listy">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>20</y>
+              <width>81</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLCDNumber {
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);}</string>
+            </property>
+           </widget>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="page_2">
+          <widget class="QTableView" name="table_ofiary">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>401</width>
+             <height>291</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="page_3">
+          <widget class="QTableView" name="table_klasy">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>401</width>
+             <height>291</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>401</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QRadioButton" name="radio_ogolne">
+            <property name="text">
+             <string>Ogólne</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_bohater">
+            <property name="text">
+             <string>Bohaterowie</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_klasa">
+            <property name="text">
+             <string>Klasy</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tab_db">
+          <property name="currentIndex">
+           <number>7</number>
+          </property>
+          <widget class="QWidget" name="tab">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <attribute name="title">
+            <string>dbo.uczniowie</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_3"/>
+            </item>
+            <item row="1" column="1">
+             <widget class="QTableView" name="tableView"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>dbo.frekwencja</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_2"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>dbo.listy</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_8">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_3"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_4">
+           <attribute name="title">
+            <string>dbo.obecnie_swietlica</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_4"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_5">
+           <attribute name="title">
+            <string>dbo.obecnie_stolowka</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_5"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_6">
+           <attribute name="title">
+            <string>dbo.stat_klasa</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_14">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_13">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_6"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_7">
+           <attribute name="title">
+            <string>dbo.stat_ofiara</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_15">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_7"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_8">
+           <attribute name="title">
+            <string>dbo.ofiary</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_18">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_17">
+              <item row="0" column="0">
+               <widget class="QTableView" name="tableView_8"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>961</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPlik">
+    <property name="title">
+     <string>&amp;Plik</string>
+    </property>
+    <addaction name="actionWej_cie"/>
+    <addaction name="actionWyj_cie"/>
+    <addaction name="actionDodaj_list"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpu_apolikacj"/>
+   </widget>
+   <widget class="QMenu" name="menuWidok">
+    <property name="title">
+     <string>Widok</string>
+    </property>
+    <addaction name="actionGUI"/>
+    <addaction name="actionTabela"/>
+   </widget>
+   <widget class="QMenu" name="menuBaza_danych">
+    <property name="title">
+     <string>Baza danych</string>
+    </property>
+    <addaction name="actionPomoc"/>
+    <addaction name="separator"/>
+    <addaction name="actionObecne_po_czenie"/>
+    <addaction name="actionZmie_po_czenie"/>
+   </widget>
+   <addaction name="menuPlik"/>
+   <addaction name="menuWidok"/>
+   <addaction name="menuBaza_danych"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionWej_cie">
+   <property name="text">
+    <string>Wejście</string>
+   </property>
+  </action>
+  <action name="actionWyj_cie">
+   <property name="text">
+    <string>Wyjście</string>
+   </property>
+  </action>
+  <action name="actionDodaj_list">
+   <property name="text">
+    <string>Dodaj list</string>
+   </property>
+  </action>
+  <action name="actionOpu_apolikacj">
+   <property name="text">
+    <string>Opuść a&amp;plikację</string>
+   </property>
+  </action>
+  <action name="actionPomoc">
+   <property name="text">
+    <string>Pomoc</string>
+   </property>
+  </action>
+  <action name="actionObecne_po_czenie">
+   <property name="text">
+    <string>Obecne połączenie</string>
+   </property>
+  </action>
+  <action name="actionZmie_po_czenie">
+   <property name="text">
+    <string>Zmień połączenie</string>
+   </property>
+  </action>
+  <action name="actionGUI">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>GUI</string>
+   </property>
+  </action>
+  <action name="actionTabela">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tabela</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
