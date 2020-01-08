@@ -9,6 +9,7 @@
 
 #include <QFormLayout>
 #include <QDialogButtonBox>
+#include <QProgressDialog>
 #include <QIntValidator>
 
 
@@ -51,8 +52,79 @@ void MainWindow::db_open(QString name) {
         qDebug() << "DB OK! [ODBC: " + name + "]";
     }
     else {
-        ui->statusBar->showMessage(db.lastError().text());
         qDebug() << db.lastError().text();
+
+zmiana:
+        QApplication::restoreOverrideCursor();
+
+        QDialog new_dbname(this);
+        QFormLayout form(&new_dbname);
+        new_dbname.setWindowTitle("Amnesty2019 - błąd połączenia ODBC");
+        new_dbname.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+
+        form.addRow(new QLabel("Error ODBC: " + db.lastError().text() + "\n\nPodaj nową nazwę połączenia ODBC z bazą SQL Server:"));
+
+        QList<QLineEdit *> fields;
+        QLineEdit *lineEdit = new QLineEdit(&new_dbname);
+        lineEdit->setText(db_name);
+        lineEdit->setObjectName("new_dbname_qstring");
+        lineEdit->setReadOnly(false);
+        form.addRow(lineEdit);
+
+
+        QDialogButtonBox buttonBox(QDialogButtonBox::Yes | QDialogButtonBox::No,
+                                   Qt::Horizontal, &new_dbname);
+        form.addRow(&buttonBox);
+        QObject::connect(&buttonBox, SIGNAL(accepted()), &new_dbname, SLOT(accept()));
+        QObject::connect(&buttonBox, SIGNAL(rejected()), &new_dbname, SLOT(reject()));
+
+        int result = new_dbname.exec();
+
+
+        if (result == QDialog::Accepted) {
+            QApplication::setOverrideCursor(Qt::WaitCursor);
+
+            db_name = this->findChild<QLineEdit*>("new_dbname_qstring")->text();
+            ui->statusBar->showMessage("Zmiana połączenia ODBC [ODBC = " + db_name + "]");
+
+//            QProgressBar * bar = new QProgressBar;        //TODO: dodać pasek postępu podczas łączenia z bazą
+//            bar->setMaximum(0);
+//            bar->setMinimum(0);
+
+//            int temp = 1;
+//            QProgressDialog wait("Proszę czekać...", "Anuluj i wyjdź", 0, temp, this);
+//            wait.setAutoClose(true);
+//            wait.setBar(bar);
+//            wait.setWindowModality(Qt::WindowModal);
+
+//            wait.setValue(1);
+
+//            if (wait.wasCanceled())
+//                exit(true);
+
+
+            db_open(db_name);
+        }
+        else if (result == QDialog::Rejected) {
+            QMessageBox::StandardButton czy_exit;
+            czy_exit = QMessageBox::question(this, "Wyjść?", "Czy na pewno chcesz opuścić aplikację?",
+                                             QMessageBox::Yes|QMessageBox::No);
+            if (czy_exit == QMessageBox::Yes) {
+                exit(true);
+            }
+            else
+                goto zmiana;
+        }
+        else
+            goto zmiana;
+
+
+
+        if (ui->stacked_global->currentIndex() == 0)
+            MainWindow::update_stat();
+        else
+            MainWindow::on_actionTabela_triggered();
+
     }
     QApplication::restoreOverrideCursor();
 }
@@ -296,7 +368,7 @@ wczytaj_kod:
 
 
     QMessageBox::StandardButton gdzie_pisze;
-    gdzie_pisze = QMessageBox::question(this, "Świetlica / stołówka", "W świetlicy czy na stołówce? [TAK - świetlica / NIE - stołówka]",
+    gdzie_pisze = QMessageBox::question(this, "Świetlica / stołówka", "W świetlicy czy na stołówce? [TAK - świetlica / NIE - stołówka]", //TODO: nazwy na przyciskach zamiast TAK / NIE
                                         QMessageBox::Yes|QMessageBox::No);
     if (gdzie_pisze == QMessageBox::Yes) {
         query.exec("INSERT INTO obecnie_swietlica (ID_ucznia) VALUES (" + ID + ");");
@@ -527,10 +599,9 @@ void MainWindow::on_actionDodaj_list_triggered()
     MainWindow::on_btn_list_clicked();
 }
 
-void MainWindow::on_actionOpu_apolikacj_triggered()
-{
+void MainWindow::on_actionOpu_apolikacj_triggered() {
     QMessageBox::StandardButton czy_exit;
-    czy_exit = QMessageBox::question(this, "Wyjść?", "Czy na pewno chcesz zamknąć to okno?",
+    czy_exit = QMessageBox::question(this, "Wyjść?", "Czy na pewno chcesz opuścić aplikację?",
                                      QMessageBox::Yes|QMessageBox::No);
     if (czy_exit == QMessageBox::Yes)
         QApplication::quit();
@@ -661,7 +732,7 @@ void MainWindow::on_actionPomoc_triggered() {
     QMessageBox db_pomoc;
     db_pomoc.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
     db_pomoc.setWindowTitle("Pomoc");
-    db_pomoc.setText("Żeby połączyć się z bazą danych należy poprawnie skonfigurować połączenie ODBC.\n\n\nNazwa: Amnesty2019 (można ją zmienić w Baza danych->Zmień połączenie)\n\nLogin: Amnesty2019 [Autoryzacja SQL Server]\nHasło: Amnesty2019\n\nDomyślna baza danych: Amnesty2019");
+    db_pomoc.setText("Żeby połączyć się z bazą danych należy poprawnie skonfigurować połączenie ODBC.\n\n\nNazwa: Amnesty2019 (można ją zmienić w Baza danych->Zmień połączenie)\n\nDomyślna baza danych: Amnesty2019");
     db_pomoc.button(QMessageBox::Ok);
     db_pomoc.exec();
 }
@@ -677,10 +748,11 @@ void MainWindow::on_actionObecne_po_czenie_triggered() {
 
 void MainWindow::on_actionZmie_po_czenie_triggered() {
     bool ok;
+
 zmiana:
     QString db_new_name = QInputDialog::getText(this,
                                                 tr("ODBC - zmień połączenie"),
-                                                tr("Podaj nową nazwę połączenia ODBC z bazą SQL Server"),
+                                                tr("Podaj nową nazwę połączenia ODBC z bazą SQL Server:"),
                                                 QLineEdit::Normal,
                                                 db_name,   &ok);
 
@@ -699,6 +771,7 @@ zmiana:
     else
         MainWindow::on_actionTabela_triggered();
 }
+
 
 void db_edit() {
     QSqlQuery query;
